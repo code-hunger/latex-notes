@@ -1,0 +1,275 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{titling}
+\usepackage[margin=1in]{geometry}
+% \usepackage[margin=10pt,a6paper]{geometry}
+
+\newtheorem{tlemma}{Тривиална лема}
+\newtheorem{lemma}[tlemma]{Лема}
+\newtheorem{deff}{Дефиниция}
+\newtheorem*{corollary}{Следствие}
+
+\newtheoremstyle{tight}{3pt}{3pt}{}{}{\bfseries}{:}{.5em}{}
+
+% \theoremstyle{tight}
+\newtheorem{notation}{Означение}
+
+\theoremstyle{definition}
+\newtheorem{intuit}{Интуиция}
+
+\usepackage{multicol}
+
+\setlength{\droptitle}{-1.1in}
+
+\title{Теорема за дефиниция по рекурсия}
+\author{Александър Гудев}
+\date{\vspace{-0.4in}}
+
+\begin{document}
+
+\maketitle
+
+\setlength{\columnsep}{0.5cm}
+\begin{multicols}{2}
+
+\begin{deff}
+    \emph{n-местна функционална операция} наричаме свойството $\Phi_n(a_1,\ldots,a_n, b)$, за което е изпълнено:
+    \[
+        \forall{\vec{a}}\,\forall{b_1,b_2} (\Phi_n(\vec{a},b_1) \land \Phi_n(\vec{a},b_2) \implies b_1 = b_2).
+    \]
+\end{deff}
+
+\begin{notation}
+    Ако $\Phi_n$ е функционална операция и е изпълнено $\Phi_n(\vec{a},b)$, пишем $F_\Phi(\vec{a})=b$.
+\end{notation}
+
+\newtheorem*{axiom}{Аксиома за замяната}
+\begin{axiom}
+    Ако $A_1, \ldots, A_n$ са множества и $\Phi_n $ е функционална операция, то елементите, при които $\Phi_n$ е изпълнено, също образуват множество:
+    %\[\{ F_\Phi(a_1 \ldots a_n) \colon a_1 \in A_1, \ldots, a_n \in A_n \}\]
+    \(\{ F_\Phi(\vec{a}) \colon \vec{a} \in A_1\!\times\!\ldots\!\times\!A_n \}\).
+\end{axiom}
+
+\begin{notation}
+    Нека $(A, \le)$ е частично наредено множество и $a \in A$. Определяме:
+    \begin{align*}
+        A^{\le a} :=& \;\{ b \in A: b \le a \},\\
+        A^{<a} :=& \; \{ b \in A: b \le a \land b \not = a \}.
+    \end{align*}
+\end{notation}
+
+\begin{notation}
+    Нека $f: A \rightarrow B$ е функция и $D \subseteq A$. Тогава
+    \(f \upharpoonright D := \{(a,b) \in f: a \in D \}\).
+\end{notation}
+
+\begin{notation}
+    Нека $A$ е множество и $f,g$ са функции с домейн $A$. Означаваме:
+    \[A_{f\not=g} := \{c \in A: f(c) \not= g(c)\}.\]
+\end{notation}
+
+\begin{tlemma}
+    Нека $f$ и $g$ са функции, дефинирани върху фундирано множество $A$, за които
+    $A_{f\not=g}$ е непразно.
+
+    Тогава за всеки минимален елемент $c_0$ на $A_{f\not=g}$ е изпълнено, че \(f \upharpoonright A^{<c_0} = g \upharpoonright A^{<c_0}\).
+    \begin{proof}
+        Нека $c \in A^{< c_0}$.
+        Тъй като $c$ е по-малък от минималния елемент $c_0$ на $ D_{f \ne g} $, то $c \not \in D_{f \ne g}$, т.е. $c$ не е от елементите, в които $f$ и $g$ се различават.
+
+        Следователно $f(c) = g(c)$, незаисимо от избора на $c$ от $A^{<c_0}$, тоест
+        \({f \upharpoonright A^{<c_0} = g \upharpoonright A^{<c_0}}\).
+    \end{proof}
+\end{tlemma}
+
+\begin{deff}
+    Нека $\Phi_2(f,a,b)$ е функционална операция, $A$ е фундирано множество и $a \in A$.
+    Казваме, че функцията \emph{$f$ е съвместима с $\Phi$ до $a$}, и пишем $\Psi_\Phi(f,a)$ при следните условия:
+    \begin{enumerate}[noitemsep]
+        \item $f$ е функция с $dom(f) \supseteq A^{\le{a}}$.
+        \item Ограничена в домейна $A^{\le{a}}$, $f$ връща точно тази стойност, която връща и $\Phi$:
+            \vspace{-6pt}
+            \[{\forall a_0\!\le\!a: f(a_0) = F_\Phi( f\upharpoonright A^{< a_0},\, a_0 )}.\]
+    \end{enumerate}
+\end{deff}
+
+\columnbreak
+
+{\small
+    \begin{intuit}
+        Функционалната операция $\Phi$ е предикатът, който ни казва как да си построим някаква функция. Нашата цел е да докажем, че тази функция е добре дефинирана, тоест има единствена такава.
+
+        В дефиницията за съвместимост на функция $f$ с функционална операция $\Phi$ въвеждаме за краткост на записа нов предикат $\Psi_\Phi$, чрез който проверяваме дали $f$ дава точно този резултат, който ни е даден от $\Phi$.
+
+        От самия предикат $\Phi$ получаваме какво трябва да върне функцията $f$ за даден аргумент $a\!\in\!A$, на базата на нейната структура за всеки по-малък елемент,
+        тоест използваме $\Phi$ така: ${\Phi(f \upharpoonright A^{<a},a,b)}$.
+    \end{intuit}
+}
+
+\begin{lemma}
+    Нека
+    $A$ е фундирано множество,
+    ${a,b\!\in\!A}$ са произволни,
+    ${D=A^{\le a}\cap A^{\le b}}$,
+    $f$ и $g$ са функции с домейн $A$,
+    $\Phi_2$ e функционална операция,\linebreak
+    и е изпълнено $\Psi_{\Phi}(f, a)$ и $\Psi_{\Phi}(g,b)$.
+
+    Тогава $f \upharpoonright D = g \upharpoonright D$. % $\forall{c \in D}: f(c) = g(c)$.
+\end{lemma}
+
+\begin{proof}
+    По условие имаме, че $f$ и $g$ са съвместими с $\Phi_2$ за аргументи, по-малки от съответно $a$ и $b$, и искаме да покажем, че те съвпадат в общия си домейн.
+
+    Ще допуснем, че има елементи в $D$, за които двете функции се различават,
+    и ще докажем, че множеството $D_{f \ne g}$, което ги съдържа, е празно.
+
+    $A$ е фундирано, $A \supset D \supset D_{f \ne g}$, тогава $D_{f \ne g}$ има минимален елемент $c_0 \in D_{f \ne g} \subset D$.
+
+    Тогава $A^{\le{c_0}} \subseteq D$, защото ${D = A^{\le a}\cap A^{\le b} = (A^{\le a})^{\le b}}$.
+
+    По тривиалната лема следва, че ${f \upharpoonright A^{<c_0} = g \upharpoonright A^{<c_0}}$.
+
+    По допускане имаме $\Psi_\Phi(f,a)$ и $\Psi_\Phi(g,b)$, тогава функциите са съвместими с $\Phi_2$ и в $c_0$:
+    % \vspace{-5pt}
+    \[ f(c_0) = F_\Phi(f\upharpoonright A^{<c_0}, c_0 ) =F_\Phi(g\upharpoonright A^{<c_0}, c_0) = g(c_0) \]
+
+    Излиза $f(c_0) = g(c_0)$, което е противоречие с избора на $c_0 \in D_{f \ne g}$ - минмален от елементите на $D$, в които двете функции се различават.
+
+    Следователно допускането, че $f$ и $g$ се различават в $D$, е грешно, тоест $f \upharpoonright D = g \upharpoonright D$.
+\end{proof}
+
+\begin{corollary}
+    Ако $\Psi_\Phi(f,a) \land \Psi_\Phi(g,a)$, то ${f=g}$.
+Следователно $\Psi_\Phi$ е функционална операция.
+\end{corollary}
+
+{\small
+    \begin{intuit}
+        Лема 2 ни показва, че две функции, съвместими с една и съща функционална операция до два елемента, трябва да съвпадат до по-малкия. 
+
+        Тогава за кое да е $a\!\in\!A$ има най-много една функция, съвместима с $\Phi$ до $a$,
+        тоест $\Psi_\Phi(f, a)$ е изпълнено за най-много едно $f$ по дадено $a \in A$.
+
+        Затова и $\Psi_\Phi$ е функционална операция относно $a$ и можем да го „питаме“ коя е функцията, съвместима с $\Phi$ до $a$.
+    \end{intuit}
+}
+\begin{lemma}
+    Нека $A$ е фундирано множество, % $a\!\in\!A$,
+    $\Phi$ е функционална операция,
+    а $F_\Phi$ е множество от функции, съвместими с $\Phi$ за целия си домейн, всяка до някое $a \in A$.
+
+    Тогава $\mathfrak{F} := \bigcup F_\Phi$ е функция, т.е. всички функции в $F_\Phi$ са съвместими помежду си, и $dom(\mathfrak{F}) = \bigcup \limits_{f\in F}\,dom(f)$.
+\end{lemma}
+
+\begin{proof}
+    Очевидно $\mathfrak{F}$ е релация, остава да видим, че е и функция, тоест трябва да докажем:
+    \[{(a,b_1) \in \mathfrak{F} \land (a,b_2) \in \mathfrak{F} \implies b_1=b_2}\]
+
+    Нека $(a,b_1) \in \mathfrak{F}$ и $(a,b_2) \in \mathfrak{F}$.
+    Тогава има функции $f_1$ и $f_2$ от $F_\Phi$, за които $f_1(a) = b_1$ и $f_2(a) = b_2$.
+
+    По построението на $F_\Phi$ има елементи ${a_1, a_2 \ge a}$, за които $\Psi_\Phi(f_1, a_1)$ и $\Psi_\Phi(f_2, a_2)$.
+
+    В по-частния случай е изпълнено\footnote{Тъй като е очевидно, съм си позволил да го приема наготово, но можете да го проверите от дефиницията на $\Psi_\Phi$, замествайки в нея $a_0$ с $a$-то от доказателството.} и $\Psi_\Phi(f_1, a)$ и $\Psi_\Phi(f_2, a)$,
+    откъдето по следствието на лема 2\linebreak
+    излиза, че $f_1 \upharpoonright A^{\le a}=f_2 \upharpoonright A^{\le a}$.
+
+    Тогава $b_1=f_1(a)=f_2(a)=b_2$, т.е. $b_1=b_2$, следователно $\mathfrak{F}$  е функция.
+
+    {
+        \small
+        А защо домейнът ѝ съвпада с обединението на домейните на изходните функции - кажи-речи, по построение\footnote{Лесно се проверява, ако вземете $(a,b)\in \mathfrak{F}$ и видите откъде е дошло; в обратната посока - взимате произволо $(a,b)$ от произволно $f\in F_\Phi$ и проверявате, че $a \in dom(\mathfrak{F})$}
+        (за упражнение на читателя).
+    }
+\end{proof}
+
+\begin{lemma}
+    Нека $A$ е фундирано множество, $\Phi_2$ е тотална\footnote{$\Phi$ е тотална, ако винаги „връща“, т.е. когато $\forall{\vec{a}}\,\exists{b}: \Phi(\vec{a},b)$.} функционална операция.
+
+    Тогава за всяко $a \in A$ има функция, съвместима с $\Phi_2$ до $a$: $\forall a\in A\,\exists f: \Psi(f,a)$.
+
+\end{lemma}
+
+\begin{proof}
+    Да допуснем противното: ${\exists\,a\!\in\!A \, \nexists f: \Psi_\Phi(f,a)}$.
+
+    Нека съвкупността от всички такива $a$-та е
+    $A_{\neg{\Psi}}:=\{a\!\in\!A: \nexists f\,(\Psi_\Phi(f,a))\}$.
+    По аксиомата за замяната $A_{\neg{\Psi}}$ е множество;
+    искаме да видим, че то всъщност е празно.
+
+    $A_{\neg{\Psi}} \subset A$, $A$ е фундирано, тогава $A_{\neg{\Psi}}$ има минимален елемент $c_0$.
+
+    Целта е да покажем, че дори тогава има функция, съвместима с $\Phi_2$ до $c_0$, което ще означава, че $c_0 \notin A_{\neg{\Psi}}$, тоест $A_{\neg{\Psi}} = \emptyset$.
+
+    Щом $c_0$ е минимален елемент в $A_{\neg{\Psi}}$,
+    то за всички, по-малки от него в $A$, има такава функция.
+
+    Нека сложим всички такива функции $f_b$ в съвкупността ${F_{<c_0} := \{f_b : \exists b<c_0 (\Psi(f_b, b)) \}}$.
+    По аксиомата за замяна $F_{<c_0}$ е множество.
+
+    \columnbreak
+    Определяме \(\mathfrak{F} := \bigcup F_{<c_0}\).
+
+    По лема 3 $\mathfrak{F}$ е функция с $dom(\mathfrak{F}) = A^{<c_0}$ и за всяко $a<c_0$ имаме функция $f \in F_{<c_0}$ с $\Psi_\Phi(f,a)$.
+
+    Искаме да „допълним“ $\mathfrak{F}$ до $\mathfrak{F}_{c_0}$, тоест да разширим домейна до $A^{\le c_0}$, запазвайки съвместимостта с $\Phi$: $\Psi(\mathfrak{F}_{c_0}, c_0)$.
+
+    За да запазим именно тази съвместимост, ще вземем стойността за $\mathfrak{F}_{c_0}$ в $c_0$ да бъде тази от диктуващия предикат\footnote{Такава стойност съществува, защото сме поискали $\Phi_2$ да е тотална.} $\Phi$, по който строим самата функция - тоест $F_\Phi(\mathfrak{F}, c_0)$.
+
+
+    Определяме $\mathfrak{F}_{c_0} := \mathfrak{F} \cup \{(c_0, F_\Phi(\mathfrak{F}, c_0))\}$.
+
+    От $\mathfrak{F} \subset \mathfrak{F}_{c_0}$ знаем, че $\mathfrak{F}_{c_0}(a) = F_{\Phi}(\mathfrak{F}_{c_0} \upharpoonright A^{\le a}, a)$ за всяко $a < c_0$.
+    По новото построение можем да твърдим същото и за $a = c_0$.
+
+    Следователно $\Psi_\Phi(\mathfrak{F}_{c_0}, c_0)$, т.е. намерихме функция, съвместима с $\Phi$ дори и за $c_0$, което е противоречие с допускането за $c_0 \in A_{\neg{\Psi}}$.
+
+    Тогава $A_{\neg{\Psi}}$ е празно и ${\forall a\!\in\!A\;\exists f: \Psi_\Phi(f,a)}$.
+\end{proof}
+
+\theoremstyle{plain}
+\newtheorem*{rec_theorem}{Теорема за дефиниция по рекурсия}
+\begin{rec_theorem}
+
+    Нека $(A,\le)$ е фундирано множество,
+    а $\Phi_2$ е тотална функционална операция.
+
+    Тогава съществува единствена функция $f$ с домейн $A$, съвместима с $\Phi_2$, тоест:
+    \[
+        \exists! f: {
+            dom(f) = A \land
+            \forall a\!\in\!A\,(f(a) = F_\Phi(f \upharpoonright A^{<a}, a))
+        }.
+    \]
+\end{rec_theorem}
+
+\begin{proof}
+    Да съберем всички функции, съвместими с $\Phi_2$ до някое $a \in A$, в съвкупността ${F}_A$:
+    \[ F_A := \{f_a\,|\,\exists\,a \in A(\Psi(f_a,a))\} \]
+
+    От аксиомата за замяна знаем, че ${F}_A$ е множество.
+
+    Нека $\mathfrak{F}_A := \bigcup F_A$. От лема 3, то е функция с $dom(\mathfrak{F}_A)=\bigcup_{f_a \in F_A} dom(f_a)$.
+    Тъй като за всяко $a \in A$ имаме такова $f_a$, то $\bigcup dom(f_a) = A$, и тогава $dom(\mathfrak{F}_A) = A$.
+
+    Нека $a\!\in\!A$ е произволно.
+    По лема 4 имаме функция $f_a$, съвместима с $\Phi$ до $a$. Тогава по построението на $F_A$ следва $f_a \in F_A$, тоест $f_a \subseteq \mathfrak{F}_A$, значи ${f_a \upharpoonright A^{<a} = \mathfrak{F}_A \upharpoonright A^{<a}}$.
+
+    От другра страна $\Psi_\Phi(f_a, a)$, значи и $\Psi_\Phi(\mathfrak{F}_A, a)$.
+
+    От последното следва (по дефиницията на $\Psi_\Phi$), че
+    $\mathfrak{F}_A(a) = F_\Phi(\mathfrak{F}_A \upharpoonright A^{<a}, a)$, независимо от избора на $a$, което и беше целта.
+\end{proof}
+
+\end{multicols}
+
+\end{document}
