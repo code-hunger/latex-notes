@@ -7,25 +7,17 @@
 \usepackage{amssymb}
 \usepackage{enumerate}
 \usepackage{enumitem}
-\usepackage{titling}
-\usepackage[margin=0.7in]{geometry}
+\usepackage[margin=1in]{geometry}
 %\usepackage[margin=10pt,a6paper]{geometry}
 \usepackage{xcolor}
 
-\newtheorem{tlemma}{Тривиална лема}
-\newtheorem{lemma}[tlemma]{Лема}
-\newtheorem{deff}{Дефиниция}
 \newtheorem*{prop}{Твърдение}
-\newtheorem*{corollary}{Следствие}
 
-\theoremstyle{definition}
-\newtheorem{intuit}{Интуиция}
 \newcommand{\grsigma}[0]{{\langle \sigma \rangle}}
-\usepackage{multicol}
 
 \begin{document}
 
-\section*{Задача 1}%
+\section*{Задача 1}
 
 \subsection*{1. а)}
 \begin{prop}
@@ -62,36 +54,36 @@
         &= {|G|}^{p-1} = p^{p-1}
     \end{align*}
 
-Предпоследното равенство се получава, като изберем по един елемент от групата за всяка позиция в наредената ${(p-1)}$-орка.
+    Предпоследното равенство се получава, като изберем по един елемент от групата за всяка позиция в наредената ${(p-1)}$-орка.
 \end{proof}
 
 \subsection*{1. б)}
 \begin{prop}
-$\sigma : M \to G^p$ е биекция от $M$ в $M$
+    $\sigma : M \to G^p$ е биекция от $M$ в $M$
 \end{prop}
 \begin{proof}
-Първо ще проверим почти очевидния факт, че $Im(\sigma) \subseteq M$.
-Разглеждаме произволно $(g_1,\dots, g_p) \in M$ и подсигуряваме, че ${\sigma((g_1,\dots, g_p)) \in M}$:
-\begin{align*}
-    \sigma((g_1,\dots, g_p)) &= g_p.g_1\dots.g_{p-1}\\
-                             &= g_p.g_1\dots.g_{p-1}(g_p g_p^{-1})\\
-                             &= g_p.(g_1,\dots, g_p)g_p^{-1}\\
-                             &= g_p(e)g_p^{-1} \\
-                             &= g_p g_p^{-1} = e
-\end{align*}
-Условието за принадлежност на $\sigma (g_1,\dots, g_p)$ в $M$ е изпълнено.
-Тогава $\sigma(\vec g) \in M \, \forall \vec g \in M$, тоест $Im(\sigma) \subseteq M$, което ни дава право да пишем $\sigma : M \to M$, вместо $\sigma : M \to G$.
+    Първо ще проверим почти очевидния факт, че $Im(\sigma) \subseteq M$.
+    Разглеждаме произволно $(g_1,\dots, g_p) \in M$ и подсигуряваме, че ${\sigma((g_1,\dots, g_p)) \in M}$:
+    \begin{align*}
+        \sigma((g_1,\dots, g_p)) &= g_p.g_1\dots.g_{p-1}\\
+        &= g_p.g_1\dots.g_{p-1}(g_p g_p^{-1})\\
+        &= g_p.(g_1,\dots, g_p)g_p^{-1}\\
+        &= g_p(e)g_p^{-1} \\
+        &= g_p g_p^{-1} = e
+    \end{align*}
+    Условието за принадлежност на $\sigma (g_1,\dots, g_p)$ в $M$ е изпълнено.
+    Тогава $\sigma(\vec g) \in M \, \forall \vec g \in M$, тоест $Im(\sigma) \subseteq M$, което ни дава право да пишем $\sigma : M \to M$, вместо $\sigma : M \to G$.
 
-В биективността на $\sigma : M \to M$ ще се убедим, построявайки нейна обратна. Очевидно, щом $\sigma$ изпляква последния елемент отпред, то $\sigma^{-1}$ трябва да го върне отзад:
-\begin{equation*}
-    \sigma^{-1}(g_1, \dots, g_p) := (g_2, \dots, g_p, g_1)
-\end{equation*}
-Записът отново е коректен, защото $p$ е просто и $p \ge 2$.
-Проверяваме биективността директно от дефинициите на $\sigma$ и $\sigma^{-1}$:
-\begin{equation*}
-    \sigma(\sigma^{-1}(g_1,\dots,g_p)) = \sigma(g_2,\dots,g_p,g_1) = (g_1, \dots, g_p)
-\end{equation*}
-Тоест $\sigma \circ \sigma^{-1} = id$, следователно $\sigma^{-1}$ наистина е обратна на $\sigma$. В заключение, $\sigma$ е биекция от $M$ в $M$, тоест $\sigma \in S_M$.
+    В биективността на $\sigma : M \to M$ ще се убедим, построявайки нейна обратна. Очевидно, щом $\sigma$ изпляква последния елемент отпред, то $\sigma^{-1}$ трябва да го върне отзад:
+    \begin{equation*}
+        \sigma^{-1}(g_1, \dots, g_p) := (g_2, \dots, g_p, g_1)
+    \end{equation*}
+    Записът отново е коректен, защото $p$ е просто и $p \ge 2$.
+    Проверяваме биективността директно от дефинициите на $\sigma$ и $\sigma^{-1}$:
+    \begin{equation*}
+        \sigma(\sigma^{-1}(g_1,\dots,g_p)) = \sigma(g_2,\dots,g_p,g_1) = (g_1, \dots, g_p)
+    \end{equation*}
+    Тоест $\sigma \circ \sigma^{-1} = id$, следователно $\sigma^{-1}$ наистина е обратна на $\sigma$. В заключение, $\sigma$ е биекция от $M$ в $M$, тоест $\sigma \in S_M$.
 \end{proof}
 
 \subsection*{1. в)}
@@ -102,42 +94,42 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
 \end{prop}
 \begin{proof}
     Да направим следната проста проверка:
-\begin{align*}
-    \sigma^p(g_1,\dots, g_p) =\,&\sigma^{p-1}(g_p, g_1,\dots, g_{p-1}) \\
-                             =\,&\sigma^{p-i}(g_{p-i+1},\dots,g_p,g_1,\dots,g_{p-i})\;\forall i\in\mathbb N\\
-                             \overset{i \rightarrow p}{=}\,&\sigma^{p-p}(g_{p-p+1},\dots,g_p)\\
-                             =\,&\sigma^{0}(g_{1},\dots,g_p) = id(g_{1},\dots,g_p)
-\end{align*}
-Получихме, че $\sigma^p = id$.
-За да сме сигурни, че $p$ е най-малкото число, удовлетворяващо това условие,
-поглеждаме втория ред от равенствата и забелязваме, че при $i<p$ аргументите са разбъркани.
+    \begin{align*}
+        \sigma^p(g_1,\dots, g_p) =\,&\sigma^{p-1}(g_p, g_1,\dots, g_{p-1}) \\
+        =\,&\sigma^{p-i}(g_{p-i+1},\dots,g_p,g_1,\dots,g_{p-i})\;\forall i\in\mathbb N\\
+        \overset{i \rightarrow p}{=}\,&\sigma^{p-p}(g_{p-p+1},\dots,g_p)\\
+        =\,&\sigma^{0}(g_{1},\dots,g_p) = id(g_{1},\dots,g_p)
+    \end{align*}
+    Получихме, че $\sigma^p = id$.
+    За да сме сигурни, че $p$ е най-малкото число, удовлетворяващо това условие,
+    поглеждаме втория ред от равенствата и забелязваме, че при $i<p$ аргументите са разбъркани.
 
-За по-неудовлетворените от тази забележка призоваваме на помощ силите на формализма и допускаме своята неправота: нека $\sigma^k = id$ за някое $k \in \mathbb N, 0 < k < p$, осмелило се да се помисли за ред на групата $\grsigma$.
-Ще заковем едно такова $k$ и ще проверим:
-\begin{align*}
-    \forall (\{g_i\}_{i=1}^p \in M)\!:\, &(g_1,\dots, g_p) \\
-   =\,&id(g_1,\dots, g_p) \\
-   \overset{\textit{доп.}}{=}\,&\sigma^k(g_1, \dots, g_p)\\
-   =\,&\sigma(\overset{k\,\text{пъти}}{\dots}   ( \sigma( (g_1,\dots, g_p)))\dots)\\
-   =\,&\sigma(\overset{k-1\,\text{пъти}}{\dots} ( \sigma( (g_p, g_1,\dots, g_{p-1})))\dots)\\
-   =\,&\sigma(\overset{k-i\,\text{пъти}}{\dots} ( \sigma( (g_{p-i+1}, \dots, g_p, g_1,\dots, g_{p-i})))\dots)\\
-   \overset{i\rightarrow k}{=}\,&\sigma^0( (g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k})) \\
-   =\,&id( (g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k}))\\
-   =\,&(g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k})
-\end{align*}
+    За по-неудовлетворените от тази забележка призоваваме на помощ силите на формализма и допускаме своята неправота: нека $\sigma^k = id$ за някое $k \in \mathbb N, 0 < k < p$, осмелило се да се помисли за ред на групата $\grsigma$.
+    Ще заковем едно такова $k$ и ще проверим:
+    \begin{align*}
+        \forall (\{g_i\}_{i=1}^p \in M)\!:\, &(g_1,\dots, g_p) \\
+        =\,&id(g_1,\dots, g_p) \\
+        \overset{\textit{доп.}}{=}\,&\sigma^k(g_1, \dots, g_p)\\
+        =\,&\sigma(\overset{k\,\text{пъти}}{\dots}   ( \sigma( (g_1,\dots, g_p)))\dots)\\
+        =\,&\sigma(\overset{k-1\,\text{пъти}}{\dots} ( \sigma( (g_p, g_1,\dots, g_{p-1})))\dots)\\
+        =\,&\sigma(\overset{k-i\,\text{пъти}}{\dots} ( \sigma( (g_{p-i+1}, \dots, g_p, g_1,\dots, g_{p-i})))\dots)\\
+        \overset{i\rightarrow k}{=}\,&\sigma^0( (g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k})) \\
+        =\,&id( (g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k}))\\
+        =\,&(g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k})
+    \end{align*}
 
-Да погледнем отново какво излезе.
-За всяко $(\{g_i\}_{i=1}^p \in M)$ имаме, че $(g_1,\dots, g_p) =\,(g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k})$.
+    Да погледнем отново какво излезе.
+    За всяко $(\{g_i\}_{i=1}^p \in M)$ имаме, че $(g_1,\dots, g_p) =\,(g_{p-k+1}, \dots, g_p, g_1,\dots, g_{p-k})$.
 
-В частност знаем, че първите елементи са равни: $g_1 = g_{p-k+1}$.
-Но $k$-то, което взехме преди малко, другояче казва: $0 < k < p$, и тогава:
-\begin{align*}
-                        &0 > -k > -p \\
-    \Longleftrightarrow &p > p-k > 0 \\
-    \Longleftrightarrow &p > p-k+1 > 1\\
-    \Longleftrightarrow &g_p \not= g_{p-k+1}
-\end{align*}
-Следователно с чиста съвест и два ритника през прозореца изхвърляме $k$ и заключаваме, че $p$ е най-малкото естествено число, за което $\sigma^p = id$. Тогава $|\grsigma| = p$.
+    В частност знаем, че първите елементи са равни: $g_1 = g_{p-k+1}$.
+    Но $k$-то, което взехме преди малко, другояче казва: $0 < k < p$, и тогава:
+    \begin{align*}
+        &0 > -k > -p \\
+        \Longleftrightarrow &p > p-k > 0 \\
+        \Longleftrightarrow &p > p-k+1 > 1\\
+        \Longleftrightarrow &g_p \not= g_{p-k+1}
+    \end{align*}
+    Следователно с чиста съвест и два ритника през прозореца изхвърляме $k$ и заключаваме, че $p$ е най-малкото естествено число, за което $\sigma^p = id$. Тогава $|\grsigma| = p$.
 \end{proof}
 
 \newcommand{\eqdefof}[1]{\underset{\textit{на } #1}{\overset{\textit{деф.}}{=\joinrel=}}}
@@ -175,7 +167,6 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
 \end{proof}
 
 \subsection*{1.д)}
-%Тази подточка се проверява съвсем директно и не заслужава особено коментиране.
 
 \begin{prop}
     Нека е дадено $\vec g \in M$. Тогава е изпълнено:
@@ -215,12 +206,9 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
     \end{enumerate}
 \end{proof}
 
-\newpage
 \subsection*{1.е)}
 Да намерим в произволна крайна група $G$ елемент от прост ред $p$, делящ нейния $n$, не звучи като проста задача. Ще подходим малко „наобратно“, въобразявайки си, че вече сме го намереили, ще разплетем оттам.
 
-%\begin{multicols}{2}
-%\thispagestyle{empty}
 \begin{prop}
     В крайна група $G$ има елемент от ред $p$, където $p$ е прото число, делящо реда на $G$.
 \end{prop}
@@ -240,12 +228,12 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
     Така. Значи $|\Upsilon| = p \Longleftrightarrow \Upsilon \cdot \overset{p \textit{ пъти}}{\dots} \cdot \Upsilon = e$.
     Ще ни избоде очите, че това е условието за принадлежност на множеството $M$, което коментираме през цялото време.
 
-    Какво означава това? Че един елемент от вида $(g, \dots, g)$ ($g \not= e$) лежи в $M$ точно когато неговият ред е $p$.
+    Какво означава това? Че един елемент от вида $(g, \dots, g)$ лежи в $M$ точно когато $g = e$ или неговият ред е $p$.
     Тоест, за нашето $\Upsilon$, $(\Upsilon, \dots, \Upsilon)$ лежи в $M$, и обратно - за всяко $(g, \dots, g) \in M$, ако $g \not= e$, то $g$ може да играе ролята на $\Upsilon$.
 
-    Ако погледнем пък предната подточка, отам можем да изведем $St_{\grsigma}(\Upsilon, \dots, \Upsilon) = \grsigma$. Чудим се какво да правим с този стабилизатор и преглеждаме услужливо качените записки от 4тата лекция, търсейки полезни твърдения със стабилизатори.
-
-    Следващите разсъждения са леко хаотични. В тях събираме различни факти, надявайки се да излезе нещо, без да сме много сигурни дали има смисъл от тях.
+    Ако погледнем пък предната подточка, отам можем да изведем $St_{\grsigma}(\Upsilon, \dots, \Upsilon) = \grsigma$.
+    Чудим се какво да правим с този стабилизатор и преглеждаме услужливо качените записки от 4тата лекция, търсейки полезни твърдения със стабилизатори.
+    Затова и следващите разсъждения са леко хаотични. В тях събираме различни факти, надявайки се да излезе нещо, без да сме много сигурни дали има смисъл от тях.
 
     Следното твърдение изглежда полезно: дължината на орбитата на даден елемент е равна на индекса на стабилизатора му.
     Непосредствено излиза $|O((\Upsilon,\dots,\Upsilon))| = 1$, тъй като стабилизаторът покрива цялата група и значи индексът му е 1.
@@ -264,7 +252,6 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
     За целта внимателно поставяме интересните елементи в красиво обозначено с ипсилон множество:
     $$M_\Upsilon := M \cap \{(s,\dots,s) \in G^p\}$$
     и извършваме разбиването:
-
     \begin{equation}
         \label{eq:sum_partition}
         |M| = \sum |O(\vec g_i)| = \sum_{\vec g \in M_\Upsilon} |O(\vec g)| + \sum_{\gunint} |O(\vec g_i)|
@@ -279,12 +266,6 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
     Да видим как можем да изразим $|M_\Upsilon|$:
 
     $$|M_\Upsilon| = |M| - \sum_{\gunint} |O(\vec g_i)|$$
-
-    %Очевидно проблем може да има единствено при равенство на двете събираеми в дясната страна - тоест, когато $|M_\Upsilon| = 0$ (а искаме да докажем, че $M_\Upsilon$ е непразно).
-    %Иначе $|M_\Upsilon|$ е строго положително.
-
-    %Най-естествено сега е да допуснем това равенсто и да видим как можем да го счупим:
-    %$$|M| = \sum_\gunint |O(\vec g_i)|$$
 
     Вече се справихме с единия клон на разбиването (\ref{eq:sum_partition}).
     Остана другият - какво можем да направим с една орбита?
@@ -301,22 +282,21 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
     Обаче, редът на стабилизатора няма как да е $p$ - това би означавало, че $|St(\vec g)| = p = |\grsigma|$, тоест $St(\vec g) = \grsigma$, което видяхме, че важи само за интересните елементи - ${\vec g_i \in M_\Upsilon}$.
     А ние гледаме извън $M_\Upsilon$ в момента.
     Тоест дължините на орбитите на всички $\vec g$-та са p.
-
     \begin{align*}
-        \sum_\gunint |O(\vec g_i)| &= \sum_\gunint p = p \sum_\gunint 1\\
-        &= p \, |\{\,\vec g_i | \gunint \}|\\
-        &= p \, |\{g_i \in M \textbackslash M_\Upsilon\}|
+        \sum_\gunint |O(\vec g_i)| &= \sum_\gunint p = p \cdot \sum_\gunint 1\\
+        &= p \cdot |\{\,\vec g_i | \gunint \}|\\
+        &= p \cdot |\{\vec g_i \in M \textbackslash M_\Upsilon\}|
     \end{align*}
 
-    Тук продължаваме под $g_i$ да разбираме представители на всички непресиащи се орбити.
-    Десният множител какво представлява\footnote{Няма абсолютно никакво значение, но ми беше хрумнало, докато решавах, и го написах.}? Това е броят орбити, породени от неинтересни елементи:
-    $$|M| = p | \{ O(\vec g) | g \in M \textbackslash M_\Upsilon \}| $$
-    \hrulefill
+    Тук продължаваме под $\vec g_i$ да разбираме представители на всички непресиащи се орбити.
+    Десният множител какво представлява\footnote{Няма абсолютно никакво значение, но ми беше хрумнало, докато решавах, и го написах.}?
+    Това е броят орбити, породени от неинтересни елементи:
+    ${|\{ O(\vec g) | \vec g \in M \textbackslash M_\Upsilon \}|}$.
 
     Връщаме се обратно в равенството от по-горе:
     \begin{align*}
         |M_\Upsilon| &= |M| - \sum_{\gunint} |O(\vec g_i)|\\
-        &= |M| - p | \{ O(\vec g) | g \in M \textbackslash M_\Upsilon \}|
+        &= |M| - p \cdot | \{ O(\vec g) \,|\, g \in M \textbackslash M_\Upsilon \}|
     \end{align*}
 
     Дясната страна се дели на $p$, тъй като $|M| = |G|^{p-1}$, а редът на $|G|$ по условие се дели на $p$.
@@ -324,6 +304,4 @@ $\sigma : M \to G^p$ е биекция от $M$ в $M$
     Тогава $|M_\Upsilon|$ също се дели на $p$. Но $M_\Upsilon$ грижливо пази единичната наредойка и $p \ge 2$, значи $|M_\Upsilon| \ge p$.
     На български казано, в $M_\Upsilon$ лежат поне $p-1 \ge 1$ интересни елемента, различни от единицата.
 \end{proof}
-
-%\end{multicols}
 \end{document}
