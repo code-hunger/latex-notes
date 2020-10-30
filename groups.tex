@@ -1,0 +1,192 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{titling}
+%\usepackage[margin=1in]{geometry}
+\usepackage[margin=10pt,a6paper]{geometry}
+
+\newtheorem{tlemma}{Тривиална лема}
+\newtheorem{lemma}[tlemma]{Лема}
+\newtheorem{deff}{Дефиниция}
+\newtheorem{prop}{Твърдение}
+\newtheorem*{corollary}{Следствие}
+
+\newtheoremstyle{tight}{3pt}{3pt}{}{}{\bfseries}{:}{.5em}{}
+
+% \theoremstyle{tight}
+
+\theoremstyle{definition}
+\newtheorem{intuit}{Интуиция}
+
+\newcommand{\divides}{\mid}
+
+%\newcommand{\ord}[1]{ord(#1)}
+\newcommand{\ord}[1]{|#1|}
+
+\newcommand{\lcm}[1]{LCM(#1)} % or use LCM(x, y)
+
+\usepackage{breqn} % line-break automatically
+
+\begin{document}
+
+В целия документ $G$ е група, $a,b \in G$, а $\mathbb N$ са естествените числа \textit{без} нулата.
+
+\begin{prop}
+    Ако $n \in \mathbb N$ и $a^n = e$, то редът на $a$ дели $n$.
+\end{prop}
+
+\begin{proof}
+    Да разделим $n = \ord a q + r$, където $0 \le r < \ord a$. Лесно проверяваме, че $r = 0$:
+
+    $$a^n = a^{\ord a q + r} = (a^{\ord a})^q a^r = e^q a^r = a^r$$
+    Тоест $e = a^n = a^r$.
+    Тъй като $r < \ord a$, а $\ord a$ е най-малкото естествено число,
+    за което $a^{\ord a} = e$, значи $r$ не е естествено число.
+    Следователно $r = 0$ и $n = \ord a q$, тоест $\ord a$ дели $n$.
+\end{proof}
+
+\begin{prop}
+    Ако $p$ е просто и $a^p = e$, то $\ord a = p$ или $a = e$.
+\end{prop}
+
+\begin{proof}
+    Нека $a^p = e$.
+От предното твърдение $\ord a$ дели $p$. Щом $p$ е просто и $\ord a$ го дели, значи $\ord a = p$, или $\ord a = 1$, което е еквивалентно на $a = e$.
+\end{proof}
+
+\begin{prop}
+    Ако $a$ е от краен ред и $k \in \mathbb{N}$, то редът на $a^k$ дели реда на $a$.
+\end{prop}
+
+\begin{proof}
+    Очевидно, $(a^k)^{\ord a} = a^{k \ord a} = (a^{\ord a})^k = e^k = e$.
+
+    По предното твърдение редът на $a^k$ дели $\ord a$.
+
+    \iffalse
+    \fi
+\end{proof}
+
+\begin{prop}
+    Ако $\ord a = km$, то $\ord {a^k} = m$.
+\end{prop}
+\begin{proof}
+    Следва оттам, че $\ord {a^k}$ и $m$ се делят едно друго:
+    \begin{enumerate}
+        \item Очевидно $(a^k)^m = a^{km} = e$, и по първото твърдение редът на $a^k$ дели $m$.
+        \item $e = (a^k)^{\ord {a^k}} = a^{k \ord {a^k}}$ и по първото твърдение редът на $a$ ($km$) дели $k \ord{a^k}$, тоест $m$ дели $\ord {a^k}$, след съкращаване на $k$.
+    \end{enumerate}
+\end{proof}
+
+\pagebreak
+\begin{prop}
+    $\ord a = \ord {bab^{-1}}$
+\end{prop}
+\begin{proof}
+    Отново следва оттам, че $\ord a$ и $\ord {bab^{-1}}$ се делят едно друго:
+    \begin{enumerate}
+        \item
+            По първото твърдение, $\ord {bab^{-1}}$ дели $\ord a$, защото:
+            \begin{align*}
+                (bab^{-1})^{\ord a}
+                &= \underbrace{(bab^{-1}) (bab^{-1}) \, \dots \, (bab^{-1}) (bab^{-1})}_{\ord a \text{\tiny пъти}}\\
+                &= ba(b^{-1}b)a(b^{-1}b) \, \dots \,(b^{-1}b)a(b^{-1}b)ab^{-1}\\
+                &= ba^{\ord a}b^{-1} = beb^{-1}\\
+                &= bb^{-1} = e
+            \end{align*}
+        \item
+            Сега защо $\ord a$ дели $\ord{bab^{-1}}$? \\
+            Искаме да получим обратното на горното, тоест $a^{\ord{bab^{-1}}}=e$.
+            Да повдигнем $bab^{-1}$ на степен своя ред, понеже това ще ни даде $e$:
+            $$(bab^{-1})^{\ord{bab^{-1}}}=e$$
+            С разсъждения като в първата част, разкривайки скобите, получаваме:
+            $$b(a^{\ord{bab^{-1}}})b^{-1}=e$$
+            Целта е да получим, че степента на $a$ в скобите е единичния елемент - затова прехвърляме крайните $b$ и $b^{-1}$ от другата страна на равенството:
+            \begin{align*}
+                b(a^{\ord{bab^{-1}}})b^{-1} &= e\\
+                a^{\ord{bab^{-1}}}b^{-1} &= b^{-1}e = b^{-1}\\
+                a^{\ord{bab^{-1}}} &= b^{-1}b = e
+            \end{align*}
+            Тогава $\ord a$ дели $\ord{bab^{-1}}$ и доказателството е завършено.
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    За всеки две числа $a$ и $b$ съществува $GCD(a, b)$.
+\end{prop}
+
+\begin{proof}
+    Нека $M = \{ua + vb > 0\,|\,u, v \in \mathbb Z\}$. Очевидно $M$ е непразно и съдържа само естествени числа. Тогава $M$ има минимален елемент $d = min M = ua + vb$ за някои $u, v \in \mathbb Z$.
+
+    Очевидно всеки общ делител $d'$ на $a$ и $b$ дели и $ua, vb$, а оттам и техния сбор - $d$.
+
+    За да се убедим, че $d$ е $GCD(a, b)$, то остава да проверим, че $d$ също е общ делител. Ще видим, че $d$ дели $a$, като разсъжденията, че $d$ дели $b$, са аналогични.
+
+    Да разделим $a = d*q + r$, където $0 \le r < |d| = d$. \\
+    Тогава $r = a - d*q = a - (au + bv)*q = a(1-uq) - bvq$.
+
+    Ако $r > 0$, то $r \in M$. Но $r < d = min M$ - противоречие.
+
+    Значи $r = 0$, тоест $d$ дели точно $a$.
+\end{proof}
+
+\begin{prop}
+    Нека $\ord a$ и $\ord b$ са взаимно прости. \\
+    Тогава $\forall i, j : a^i = b^j \implies i = j = 0$.
+\end{prop}
+
+\begin{proof}
+    Нека $GCD(|a|,|b|) = 1$ и $a^i = b^j$.
+    Без ограничение можем да считаме, че $i \le j$, $i < \ord a$ и $j < \ord b$.
+    Прегвърляме дясната страна отляво:
+    \begin{align*}
+        a^i &= b^j = b^{i + \overbrace{(j-i)}^{\ge 0}}\\
+        a^i(b^{i+(j-i)})^{-1} &= e\\
+        a^ix \dots
+    \end{align*}
+    @TODO
+\end{proof}
+
+\begin{prop}
+    Нека $H = \langle a , b \rangle \le G$. Тогава съществува елемент $c$ от ред $LCM(\ord a, \ord b)$.
+\end{prop}
+\begin{proof}
+    Да разгледаме редовете на $a$ и $b$:
+    \begin{align*}
+        \ord a = p_1^{\alpha_1} \dots p_n^{\alpha_n}\\
+        \ord b = p_1^{\beta_1} \dots p_n^{\beta_n}\\
+    \end{align*}
+    Най-малкото общо кратно тогава е $p_1^{\gamma_1} \dots p_n^{\gamma_n}$, където $\gamma_i$ е по-голямата степен на съответното $p_i$: $\gamma_i = \text{max}\{\alpha_i, \beta_i\}$.
+
+    Търсеното $c$ трябва да има ред $p_1^{\gamma_1} \dots p_n^{\gamma_n}$, а всички тези множители са взаимно прости. Затова ще опитаме да построим $c$ от елементи, всеки от които има ред съответния множител:
+
+    $$c = c_1 \dots c_2$$
+    така че $\ord {c_i} = p_i^{\gamma_i}$. Тогава $\ord c = \ord{c_1\dots c_n} = \ord{c_1}\dots\ord{c_n}$.
+
+    Всяко търсено $c_i$ можем да построим, "отстранявайки" от реда на съответното $a$ или $b$ (според това дали $\gamma_i = \alpha_i$ или $\gamma_i = \alpha_i$) множителите, различни от $p_i$:
+
+    $$c_i = t^{\frac{\ord t}{p^{\gamma_i}}}$$
+    където $t = a$ при $\gamma_i = \alpha_i$ и $t = b$ при $\gamma_i = \beta_i$.
+\end{proof}
+
+\begin{prop}
+    Нека $H \trianglelefteq G$ и $A \le G$. Тогава $H \cap A \trianglelefteq A$.
+\end{prop}
+\begin{proof}
+    Вж. схема. (jeszcze yok)
+
+    Нека $h \in H\cap A$ и $a \in A$ са произволни. Проверяваме директно, че $aha^{-1} \in H\cap A$:
+    \begin{enumerate}
+        \item $a, h \in A$ и $A$ е група, значи $aha^{-1} \in A$.
+        \item $H$ е нормална в $G$ и $h \in H$, значи $aha^{-1} \in H$.
+    \end{enumerate}
+
+    Оттук следва, че $H \cap A$ е нормална подгрупа на $A$.
+\end{proof}
+\end{document}
